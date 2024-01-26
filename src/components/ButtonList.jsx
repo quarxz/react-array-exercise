@@ -4,7 +4,13 @@ import { useState } from "react";
 export function ButtonList() {
   let [btnHiglight, setBtnHighLight] = useState("");
 
-  // const buttons = ["all", "women", "byName", "byAge"];
+  const buttons = [
+    { id: 1, name: "All" },
+    { id: 2, name: "Women" },
+    { id: 3, name: "Men" },
+    { id: 4, name: "ByName" },
+    { id: 5, name: "ByAge" },
+  ];
 
   function handleFilterAndSort(event) {
     const id = event.target.id;
@@ -17,51 +23,19 @@ export function ButtonList() {
   return (
     <>
       <div className={styles["btn-comtainer"]}>
-        <button
-          id="btnAll"
-          style={{
-            borderColor: btnHiglight === "btnAll" ? "salmon" : undefined,
-          }}
-          onClick={handleFilterAndSort}
-        >
-          All
-        </button>
-        <button
-          id="btnWomen"
-          style={{
-            borderColor: btnHiglight === "btnWomen" ? "salmon" : undefined,
-          }}
-          onClick={handleFilterAndSort}
-        >
-          Women
-        </button>
-        <button
-          id="btnMen"
-          style={{
-            borderColor: btnHiglight === "btnMen" ? "salmon" : undefined,
-          }}
-          onClick={handleFilterAndSort}
-        >
-          Men
-        </button>
-        <button
-          id="btnByName"
-          style={{
-            borderColor: btnHiglight === "btnByName" ? "salmon" : undefined,
-          }}
-          onClick={handleFilterAndSort}
-        >
-          By name
-        </button>
-        <button
-          id="btnByAge"
-          style={{
-            borderColor: btnHiglight === "btnByAge" ? "salmon" : undefined,
-          }}
-          onClick={handleFilterAndSort}
-        >
-          By age
-        </button>
+        {buttons.map((btn) => (
+          <button
+            id={"btn" + btn.name}
+            onClick={handleFilterAndSort}
+            style={{
+              borderColor:
+                btnHiglight === "btn" + btn.name ? "salmon" : undefined,
+            }}
+            key={btn.id}
+          >
+            {btn.name}
+          </button>
+        ))}
       </div>
     </>
   );
