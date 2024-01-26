@@ -1,9 +1,8 @@
-import styles from "./ButtonList.module.css";
+import styles from "./ButtonBar.module.css";
 import { useState } from "react";
 
-export function ButtonList() {
+export function ButtonBar() {
   let [btnHiglight, setBtnHighLight] = useState("");
-
   const buttons = [
     { id: 1, name: "All" },
     { id: 2, name: "Women" },
@@ -11,7 +10,6 @@ export function ButtonList() {
     { id: 4, name: "ByName" },
     { id: 5, name: "ByAge" },
   ];
-
   function handleFilterAndSort(event) {
     const id = event.target.id;
     setBtnHighLight(id);

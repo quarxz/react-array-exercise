@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import { Card } from "./components/Card";
 import { users } from "./data/users";
-import { ButtonList } from "./components/ButtonList";
+import { ButtonBar } from "./components/ButtonBar";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         <h1>Array function magic</h1>
       </header>
       <main>
-        <ButtonList />
+        <ButtonBar />
         <section className="card-list">
           {users.map((user) => {
             return <Card key={user.email} user={user} />;
