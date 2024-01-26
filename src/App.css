@@ -48,5 +48,7 @@ button:hover {
 button:focus,
 button:focus-visible {
   /* outline: 4px auto -webkit-focus-ring-color; */
-  outline: 4px auto #333;
+  outline: 1px auto #333;
+  background-color: #333;
+  color: aliceblue;
 }
