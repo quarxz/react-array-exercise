@@ -21,23 +21,13 @@ function App() {
   const arr = [];
   function handleFilterAndSort(event) {
     const id = event.target.id;
-    setBtnHighLight(id);
-    // Fliter
-    if (id === "all") {
-      setFilter((prevFilter) => (prevFilter = "all"));
-    }
-    if (id === "women") {
-      setFilter((prevFilter) => (prevFilter = "women"));
-    }
-    if (id === "men") {
-      setFilter((prevFilter) => (prevFilter = "men"));
+    // Filter
+    if (id === "all" || id === "women" || id === "men") {
+      setFilter((prevFilter) => (prevFilter = id));
     }
     // Sort
-    if (id === "name") {
-      setSort((prevSort) => (prevSort = "name"));
-    }
-    if (id === "age") {
-      setSort((prevSort) => (prevSort = "age"));
+    if (id === "name" || id === "age") {
+      setSort((prevSort) => (prevSort = id));
     }
   }
 
