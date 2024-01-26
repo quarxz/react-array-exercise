@@ -5,20 +5,16 @@ import { users } from "./data/users";
 
 function App() {
   const [filter, setFilter] = useState("all");
-  const [sort, setSort] = useState("");
+  const [sort, setSort] = useState("name");
 
-  const buttonsFilter = [
-    { id: 1, name: "all" },
-    { id: 2, name: "women" },
-    { id: 3, name: "men" },
+  const buttons = [
+    { id: 1, name: "all", task: "filter" },
+    { id: 2, name: "women", task: "filter" },
+    { id: 3, name: "men", task: "filter" },
+    { id: 4, name: "name", task: "sort" },
+    { id: 5, name: "age", task: "sort" },
   ];
 
-  const buttonsSort = [
-    { id: 4, name: "name" },
-    { id: 5, name: "age" },
-  ];
-
-  const arr = [];
   function handleFilterAndSort(event) {
     const id = event.target.id;
     // Filter
@@ -38,28 +34,18 @@ function App() {
       </header>
       <main>
         <div className="btn-container">
-          {buttonsFilter.map((btn) => (
+          {buttons.map((btn) => (
             <button
               id={btn.name}
               onClick={handleFilterAndSort}
               className={`action-button ${
-                filter === btn.name ? "action-button--highlight" : ""
+                (btn.task === "filter" ? filter : sort) === btn.name
+                  ? "action-button--highlight"
+                  : ""
               }`}
               key={btn.id}
             >
               {btn.name.charAt(0).toUpperCase() + btn.name.slice(1)}
-            </button>
-          ))}
-          {buttonsSort.map((btn) => (
-            <button
-              id={btn.name}
-              onClick={handleFilterAndSort}
-              className={`action-button ${
-                sort === btn.name ? "action-button--highlight" : ""
-              }`}
-              key={btn.id}
-            >
-              {"By " + btn.name.charAt(0).toUpperCase() + btn.name.slice(1)}
             </button>
           ))}
         </div>
