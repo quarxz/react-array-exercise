@@ -25,20 +25,20 @@ function App() {
     setBtnHighLight(id);
     // Fliter
     if (id === "all") {
-      setFilter((prevfilter) => (prevfilter = "all"));
+      setFilter((prevFilter) => (prevFilter = "all"));
     }
     if (id === "women") {
-      setFilter((prevfilter) => (prevfilter = "women"));
+      setFilter((prevFilter) => (prevFilter = "women"));
     }
     if (id === "men") {
-      setFilter((prevfilter) => (prevfilter = "men"));
+      setFilter((prevFilter) => (prevFilter = "men"));
     }
     // Sort
     if (id === "name") {
-      setSort((precSort) => (precSort = "name"));
+      setSort((prevSort) => (prevSort = "name"));
     }
     if (id === "age") {
-      setSort((precSort) => (precSort = "age"));
+      setSort((prevSort) => (prevSort = "age"));
     }
   }
 
