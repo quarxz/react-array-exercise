@@ -4,7 +4,6 @@ import { Card } from "./components/Card";
 import { users } from "./data/users";
 
 function App() {
-  const [btnHiglight, setBtnHighLight] = useState("");
   const [filter, setFilter] = useState("all");
   const [sort, setSort] = useState("");
 
