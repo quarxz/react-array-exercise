@@ -6,6 +6,7 @@ import { users } from "./data/users";
 function App() {
   const [filter, setFilter] = useState("all");
   const [sort, setSort] = useState("name");
+  const [check, setCheck] = useState("both");
 
   const buttons = [
     { id: 1, name: "all", task: "filter" },
@@ -27,6 +28,11 @@ function App() {
     }
   }
 
+  const onOptionChange = (event) => {
+    setCheck(event.target.value);
+    console.log(event.target.value);
+  };
+
   return (
     <>
       <header>
@@ -39,8 +45,18 @@ function App() {
               id={btn.name}
               onClick={handleFilterAndSort}
               className={`action-button ${
-                (btn.task === "filter" ? filter : sort) === btn.name
-                  ? "action-button--highlight"
+                check === "both"
+                  ? (btn.task === "filter" ? filter : sort) === btn.name
+                    ? "action-button--highlight"
+                    : ""
+                  : check === "filterOnly"
+                  ? (btn.task === "filter" ? filter : "") === btn.name
+                    ? "action-button--highlight"
+                    : ""
+                  : check === "sortOnly"
+                  ? (btn.task === "filter" ? "" : sort) === btn.name
+                    ? "action-button--highlight"
+                    : ""
                   : ""
               }`}
               key={btn.id}
@@ -49,27 +65,61 @@ function App() {
             </button>
           ))}
         </div>
+        <div className="checkbox-container">
+          <input
+            type="radio"
+            name="filter"
+            value="both"
+            id="both"
+            checked={check === "both"}
+            onChange={onOptionChange}
+          />
+          <label htmlFor="both">Filter/Sort</label>
+          <input
+            type="radio"
+            name="filter"
+            value="filterOnly"
+            id="filterOnly"
+            checked={check === "filterOnly"}
+            onChange={onOptionChange}
+          />
+          <label htmlFor="filterOnly">Filter only</label>
+          <input
+            type="radio"
+            name="filter"
+            value="sortOnly"
+            id="sortOnly"
+            checked={check === "sortOnly"}
+            onChange={onOptionChange}
+          />
+          <label htmlFor="sortOnly">Sort only</label>
+        </div>
         <section className="card-list">
           {users
             .filter((user) => {
               if (filter === "all") {
                 return true;
               }
-              if (filter === "women" && user.gender === "female") {
-                return true;
+              if (check === "both" || check === "filterOnly") {
+                if (filter === "women" && user.gender === "female") {
+                  return true;
+                }
+                if (filter === "men" && user.gender === "male") {
+                  return true;
+                }
+                return false;
               }
-              if (filter === "men" && user.gender === "male") {
-                return true;
-              }
-              return false;
+              return true;
             })
             .slice()
             .sort((a, b) => {
-              if (sort === "age") {
-                return a.dob.age - b.dob.age;
-              }
-              if (sort === "name") {
-                return a.name.last.localeCompare(b.name.last);
+              if (check === "both" || check === "sortOnly") {
+                if (sort === "age") {
+                  return a.dob.age - b.dob.age;
+                }
+                if (sort === "name") {
+                  return a.name.last.localeCompare(b.name.last);
+                }
               }
             })
             .map((user) => {

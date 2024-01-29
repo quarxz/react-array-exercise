@@ -49,3 +49,19 @@ main {
 .action-button--highlight {
   border-color: salmon;
 }
+
+.checkbox-container {
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px 0;
+}
+.checkbox-container label {
+  margin: 0 10px;
+}
+.checkbox-container input {
+  margin: 0 10px 0 10px;
+}
+.checkbox-container input:hover,
+.checkbox-container label:hover {
+  cursor: pointer;
+}
