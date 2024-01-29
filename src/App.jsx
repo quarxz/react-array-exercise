@@ -59,7 +59,7 @@ function App() {
             </button>
           ))}
         </div>
-        <div className="checkbox-container">
+        <div className="radio-container">
           <input
             type="radio"
             name="filter"

@@ -50,18 +50,18 @@ main {
   border-color: salmon;
 }
 
-.checkbox-container {
+.radio-container {
   flex-direction: row;
   justify-content: center;
   padding: 10px 0;
 }
-.checkbox-container label {
+.radio-container label {
   margin: 0 10px;
 }
-.checkbox-container input {
+.radio-container input {
   margin: 0 10px 0 10px;
 }
-.checkbox-container input:hover,
-.checkbox-container label:hover {
+.radio-container input:hover,
+.radio-container label:hover {
   cursor: pointer;
 }
