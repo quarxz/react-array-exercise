@@ -16,7 +16,7 @@ function App() {
     { id: 5, name: "age", task: "sort" },
   ];
 
-  function handleFilterAndSort(event) {
+  const handleFilterAndSort = (event) => {
     const id = event.target.id;
     // Filter
     if (id === "all" || id === "women" || id === "men") {
@@ -26,7 +26,7 @@ function App() {
     if (id === "name" || id === "age") {
       setSort((prevSort) => (prevSort = id));
     }
-  }
+  };
 
   const onOptionChange = (event) => {
     setCheck(event.target.value);
@@ -46,17 +46,11 @@ function App() {
               onClick={handleFilterAndSort}
               className={`action-button ${
                 check === "both"
-                  ? (btn.task === "filter" ? filter : sort) === btn.name
-                    ? "action-button--highlight"
-                    : ""
+                  ? (btn.task === "filter" ? filter : sort) === btn.name && "action-button--highlight"
                   : check === "filterOnly"
-                  ? (btn.task === "filter" ? filter : "") === btn.name
-                    ? "action-button--highlight"
-                    : ""
+                  ? (btn.task === "filter" && filter) === btn.name && "action-button--highlight"
                   : check === "sortOnly"
-                  ? (btn.task === "filter" ? "" : sort) === btn.name
-                    ? "action-button--highlight"
-                    : ""
+                  ? (btn.task === "sort" && sort) === btn.name && "action-button--highlight"
                   : ""
               }`}
               key={btn.id}
